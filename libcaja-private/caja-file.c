@@ -4390,11 +4390,7 @@ caja_file_should_show_thumbnail (CajaFile *file)
 	}
 
 	if (show_image_thumbs == CAJA_SPEED_TRADEOFF_ALWAYS) {
-		if (use_preview == G_FILESYSTEM_PREVIEW_TYPE_NEVER) {
-			return FALSE;
-		} else {
-			return TRUE;
-		}
+		return TRUE;
 	} else if (show_image_thumbs == CAJA_SPEED_TRADEOFF_NEVER) {
 		return FALSE;
 	} else {
@@ -5050,11 +5046,7 @@ get_speed_tradeoff_preference_for_file (CajaFile *file, CajaSpeedTradeoffValue v
 	use_preview = caja_file_get_filesystem_use_preview (file);
 
 	if (value == CAJA_SPEED_TRADEOFF_ALWAYS) {
-		if (use_preview == G_FILESYSTEM_PREVIEW_TYPE_NEVER) {
-			return FALSE;
-		} else {
-			return TRUE;
-		}
+		return TRUE;
 	}
 
 	if (value == CAJA_SPEED_TRADEOFF_NEVER) {

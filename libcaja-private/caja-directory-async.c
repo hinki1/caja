@@ -4676,6 +4676,11 @@ got_filesystem_info (FilesystemInfoState *state, GFileInfo *info)
     {
         file->details->filesystem_use_preview =
             g_file_info_get_attribute_uint32 (info, G_FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW);
+	const char *fstype = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_FILESYSTEM_TYPE);
+        if (g_strcmp0 ("mtpfs", fstype) == 0)
+        {
+            file->details->filesystem_use_preview = G_FILESYSTEM_PREVIEW_TYPE_IF_ALWAYS;
+        }
         file->details->filesystem_readonly =
             g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_FILESYSTEM_READONLY);
     }
